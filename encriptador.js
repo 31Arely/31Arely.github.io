@@ -1,0 +1,68 @@
+const textArea = document.querySelector(".text-area");
+const mensaje = document.querySelector(".mensaje");
+
+
+//La letra "e" es convertida para "enter"
+//La letra "i" es convertida para "imes"
+//La letra "a" es convertida para "ai"
+//La letra "o" es convertida para "ober"
+//La letra "u" es convertida para "ufat"
+
+function btnEncriptar(){
+    const textoEncriptado = encriptar(textArea.value)
+    mensaje.value = textoEncriptado
+    textArea.value = "";
+    mensaje.style.backgroundImage = "none"
+}
+
+function encriptar(stringEncriptada){
+    let matrizCodigo =[["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u","ufat"]];
+    stringEncriptada = stringEncriptada.toLowerCase()
+    
+    for(let i = 0; i < matrizCodigo.length; i++){
+        if(stringEncriptada.includes(matrizCodigo[i][0])){
+            stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1])
+        }
+    }
+    return stringEncriptada
+}
+
+function btnDesencriptar(){
+    const textoEncriptado = desencriptar(textArea.value)
+    mensaje.value = textoEncriptado
+    textArea.value = "";
+}
+
+function desencriptar(stringDesencriptada){
+    let matrizCodigo =[["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u","ufat"]];
+    stringDesencriptada = stringDesencriptada.toLowerCase()
+    
+    for(let i = 0; i < matrizCodigo.length; i++){
+        if(stringDesencriptada.includes(matrizCodigo[i][1])){
+            stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0])
+        }
+    }
+    return stringDesencriptada
+}
+
+
+
+/*function copiarMensaje() {
+    var copyText = document.getElementsByName("btn-copiar");
+    copyText.select(textoEncriptado);
+    navigator.clipboard.writeText(copyText.value);
+
+} */
+
+
+function copiarTexto(){
+    var textoCopiar = document.getElementById("texto-copiar").value;
+    //var boton = document.getElementById("boton-copiar");
+
+    navigator.clipboard
+        .writeText(textoCopiar)
+        .then(() => alert("¡Texto copiado al portapapeles: " + textoCopiar + "!"))
+        .catch((err) => console.error("Error al intentar copiar el texto: ", err));
+    }
+
+

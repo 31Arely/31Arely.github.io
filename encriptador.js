@@ -2,12 +2,6 @@ const textArea = document.querySelector(".text-area");
 const mensaje = document.querySelector(".mensaje");
 
 
-//La letra "e" es convertida para "enter"
-//La letra "i" es convertida para "imes"
-//La letra "a" es convertida para "ai"
-//La letra "o" es convertida para "ober"
-//La letra "u" es convertida para "ufat"
-
 function btnEncriptar(){
     const textoEncriptado = encriptar(textArea.value)
     mensaje.value = textoEncriptado
@@ -45,19 +39,9 @@ function desencriptar(stringDesencriptada){
     return stringDesencriptada
 }
 
-
-
-/*function copiarMensaje() {
-    var copyText = document.getElementsByName("btn-copiar");
-    copyText.select(textoEncriptado);
-    navigator.clipboard.writeText(copyText.value);
-
-} */
-
-
 function copiarTexto(){
     var textoCopiar = document.getElementById("texto-copiar").value;
-    //var boton = document.getElementById("boton-copiar");
+
 
     navigator.clipboard
         .writeText(textoCopiar)
